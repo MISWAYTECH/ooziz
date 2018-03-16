@@ -1,0 +1,6 @@
+framework module oozizSDK {
+  umbrella header "oozizSDK.h"
+
+  export *
+  module * { export * }
+}
