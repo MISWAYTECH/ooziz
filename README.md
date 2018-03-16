@@ -2,12 +2,15 @@
 
 ## Create a singleton object 
 ```Objectice-C
-[MTDeviceManager sharedManager] 
+[MTDeviceManager sharedManager];
 ```
 
 ## Detecting Bluetooth is turned on, you need to register notice 
 ```Objectice-C
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bleOn) name:MTDevicePowerOnNotification object:nil];
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                         selector:@selector(bleOn) 
+                                             name:MTDevicePowerOnNotification 
+                                           object:nil];
 ```
 
 ## Search for Bluetooth devices 
