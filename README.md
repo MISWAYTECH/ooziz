@@ -25,6 +25,12 @@
 
 ## Connection callback notification registration required 
 ```Objectice-C
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectNotify:) name:MTDeviceConnectedNotification object:nil];
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectNotify:) name:MTDeviceDisconnectedNotification object:nil];
+[[NSNotificationCenter defaultCenter] addObserver:self 
+                                         selector:@selector(connectNotify:) 
+                                             name:MTDeviceConnectedNotification 
+                                           object:nil];
+[[NSNotificationCenter defaultCenter] addObserver:self 
+                                         selector:@selector(disconnectNotify:) 
+                                             name:MTDeviceDisconnectedNotification 
+                                           object:nil];
 ```
