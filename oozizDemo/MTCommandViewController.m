@@ -26,18 +26,37 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)pressSoundBtn:(id)sender {
-    NSArray<CBPeripheral *> * array = [[MTDeviceManager sharedManager] retrieveDevicesWithIdentifiers:@[[CBUUID UUIDWithString:self.tag.uuidString]]];
-    CBPeripheral *peripheral = array.lastObject;
-    [[MTDeviceManager sharedManager] sendControlCommand:MTControlCommandSoundOrMute toDevice:peripheral];
+    NSArray<CBPeripheral *> * array = [[MTDeviceManager sharedManager] retrieveConnectedDevices];
+    CBPeripheral *peripheral = nil;
+    for (CBPeripheral *device in array) {
+        if ([device.identifier.UUIDString isEqualToString:self.tag.uuidString]) {
+            peripheral = device;
+            break;
+        }
+    }
+    if (peripheral) {
+        [[MTDeviceManager sharedManager] sendControlCommand:MTControlCommandSoundOrMute toDevice:peripheral];
+    }
+    
+    
 }
 - (IBAction)pressMuteBtn:(id)sender {
 
 }
 - (IBAction)pressOffBtn:(id)sender {
-    NSArray<CBPeripheral *> * array = [[MTDeviceManager sharedManager] retrieveDevicesWithIdentifiers:@[[CBUUID UUIDWithString:self.tag.uuidString]]];
-    CBPeripheral *device = array.lastObject;
-    [[MTDeviceManager sharedManager] sendControlCommand:MTControlCommandPowerOff toDevice:device];
+    NSArray<CBPeripheral *> * array = [[MTDeviceManager sharedManager] retrieveConnectedDevices];
+    CBPeripheral *peripheral = nil;
+    for (CBPeripheral *device in array) {
+        if ([device.identifier.UUIDString isEqualToString:self.tag.uuidString]) {
+            peripheral = device;
+            break;
+        }
+    }
+    if (peripheral) {
+        [[MTDeviceManager sharedManager] sendControlCommand:MTControlCommandPowerOff toDevice:peripheral];
+    }
 }
+
 - (IBAction)pressBatteryLevel:(id)sender {
 
 }
